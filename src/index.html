@@ -2,7 +2,6 @@
 <html ng-app="whoWhatWhere">
 <head>
     <meta charset="UTF-8"/>
-
     <title>Wh3</title>
     <!--Inclusion of all needed libraries files-->
     <script src="lib/jquery/jquery-2.0.3.min.js"></script>
@@ -23,11 +22,10 @@
     <script src="js/controllers/mainController.js"></script>
     <script src="js/service/yelpData.js"></script>
     <script src="js/service/foursqureData.js"></script>
-
 </head>
 
 <body class="bgColor" data-ng-controller="mainController">
-    <div class="container">
+    <div class="container" onload="load()">
         <div class="row">
             <header>
                 <div class="col-md-4">
@@ -39,15 +37,15 @@
                 <nav class="col-md-8 navbar navbar-default">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a id="home" class="active" ui-sref="home">Home</a></li>
-                        <li><a id="food" ui-sref="business" ng-click="onclickMenuItem($event)">Foods</a></li>
-                        <li><a id="lifeStyle" ui-sref="business" ng-click="onclickMenuItem($event)">LifeStyle</a></li>
-                        <li><a id="fun" ui-sref="business" ng-click="onclickMenuItem($event)">Fun</a></li>
-                        <li><a id="bars" ui-sref="business" ng-click="onclickMenuItem($event)">Bar</a></li>
-                        <li><a id="coffee" ui-sref="business" ng-click="onclickMenuItem($event)">Coffee</a></li>
-                        <li><a id="restaurants" ui-sref="business" ng-click="onclickMenuItem($event)">Restaurants</a></li>
+                        <li><a id="food" ng-click="onclickMenuItem($event)">Foods</a></li>
+                        <li><a id="lifeStyle" ng-click="onclickMenuItem($event)">LifeStyle</a></li>
+                        <li><a id="fun" ng-click="onclickMenuItem($event)">Fun</a></li>
+                        <li><a id="bars" ng-click="onclickMenuItem($event)">Bar</a></li>
+                        <li><a id="coffee" ng-click="onclickMenuItem($event)">Coffee</a></li>
+                        <li><a id="restaurants" ng-click="onclickMenuItem($event)">Restaurants</a></li>
                     </ul>
                 </nav>
-                <div class="col-md-8 pull-right">
+                <div class="col-md-12 col-md-offset-2">
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                             <input class="form-control" type="search" required  id="searchItem" ng-model="menuItem"
@@ -66,7 +64,10 @@
                 </div>
             </header>
         </div>
+        <div ui-view></div>
+        <div id="loader-screen">
+            <div class="loader"></div>
+        </div>
     </div>
-    <div ui-view class="container"></div>
 </body>
 </html>

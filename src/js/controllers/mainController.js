@@ -1,10 +1,11 @@
 app.controller("mainController", function ($scope, NgMap, GetDataSource, yelpData, foursqureData, $location) {
 
     function dataRequest(cityName, ItemName) {
-        $scope.personalData = [];
-
+        angular.element('#loader-screen').css('visibility', 'visible');
         GetDataSource.retrieveFourSquare(cityName, ItemName).then(function (fourData) {
-            GetDataSource.retrieveYelp(cityName, ItemName).then(function (yData, callback) {
+            GetDataSource.retrieveYelp(cityName, ItemName).then(function (yData) {
+                $scope.personalData = [];
+                $location.path('/business');
                 var yData = yelpData.yelpFilterData(yData);
                 var fourQData = foursqureData.foursqureFilterData(fourData);
                 var margeData = _.unionBy(yData, fourQData);
@@ -22,8 +23,10 @@ app.controller("mainController", function ($scope, NgMap, GetDataSource, yelpDat
                     });
                     i++
                 }
+                if ($scope.personalData.length == 25) {
+                    angular.element('#loader-screen').css('visibility', 'hidden');
+                }
             });
-
         });
     }
 
@@ -46,12 +49,11 @@ app.controller("mainController", function ($scope, NgMap, GetDataSource, yelpDat
         "scaledSize": [20, 40],
         "url": "assets/images/myMarker.png"
     };
-
     $scope.onclickMenuItem = function (event) {
-        $scope.city='';
-        $scope.menuItem='';
-        var itemName = event.target.id;
+        $scope.city = '';
+        $scope.menuItem = '';
         var cityName = 'sydney';
+        var itemName = event.target.id;
         dataRequest(cityName, itemName);
     };
     $scope.onSubmitClick = function () {

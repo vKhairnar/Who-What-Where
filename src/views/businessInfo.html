@@ -1,12 +1,12 @@
-<div class="row">
-    <div class="col-md-4">
+<div class="row" >
+    <div class="col-md-4 col-xs-4">
         <div class="listContainer">
             <div class="list row" ng-repeat="item in personalData" class="item-detail">
-                <div class="col-md-4 pull-left ">
+                <div class="col-md-4 col-xs-4 pull-left ">
                     <img class="image" ng-src="{{item.image}}"/>
                 </div>
-                <div class="col-md-8">
-                    <div class="name" ng-mouseover="showCity(event,item,true)"
+                <div class="col-md-8 col-xs-8">
+                    <div class="name" ng-mouseover="showCity(event,personalData[$index],true)"
                          ng-mouseout="showCity(event,item,false)"><a href="{{item.url}}">{{item.name}}</a></div>
                     <div class="address" ng-repeat="add in item.address track by $index">{{add}}</div>
                     <div class="phone">{{item.phone}}</div>
@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 col-xs-8">
         <div map-lazy-load="https://maps.google.com/maps/api/js">
             <ng-map class="map" center="{{personalData[0].lat}}, {{personalData[0].lan}}" zoom="14">
                 <info-window id="myInfoWindow">
@@ -29,7 +29,7 @@
                     </div>
                 </info-window>
                 <marker ng-repeat="marker in personalData" position="[{{marker.lat}},{{marker.lan}}]"
-                        title="{{marker.name}}" icon="{{icon}}"
+                        title="{{marker.name}}" icon="{{icon}}" animation="DROP"
                         on-mouseover="showCity(event,marker,true)"
                         on-click="showCity(event,marker,true)">
                 </marker>
