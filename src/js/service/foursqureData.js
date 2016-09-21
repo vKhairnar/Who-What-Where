@@ -24,7 +24,7 @@ angular.module('whoWhatWhere').factory('foursqureData', function () {
                         for (var j = 0; j < urlName.length; j++) {
                             uName = uName + urlName[j];
                         }
-                        url = 'www.' + uName + '.com'
+                        url = 'http://www.' + uName + '.com'
                     }
                     if (_.isUndefined(data[i].location.lat)) {
                         lat = 'Not Provided';
