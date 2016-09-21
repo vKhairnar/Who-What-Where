@@ -3,7 +3,6 @@ angular.module('whoWhatWhere').factory('foursqureData', function () {
     return {
         "foursqureFilterData": function (data) {
             if (!_.isUndefined(data)) {
-                console.log('forceData',data);
                 var filterfoursqureArray = [];
                 for (var i = 0; i < data.length; i++) {
                     if (_.isUndefined(data[i].image_url)) {

@@ -3,7 +3,6 @@ angular.module('whoWhatWhere').factory('yelpData', function () {
     return {
         "yelpFilterData": function (data) {
             if (!_.isUndefined(data)) {
-                console.log('yelpData',data);
                 var filterYelpArray = [];
                 for (var i = 0; i < data.length; i++) {
                     if (_.isUndefined(data[i].image_url)) {

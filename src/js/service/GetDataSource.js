@@ -8,8 +8,8 @@ angular.module('whoWhatWhere').factory('GetDataSource', ['$http', '$q', function
     }
 
     return {
-        "retrieveYelp": function (loc,term, callback) {
-            if(_.isUndefined(loc)){
+        "retrieveYelp": function (loc,term) {
+            if(_.isUndefined(loc) ){
                 location= 'california'
             }else {
                 location = loc
@@ -32,7 +32,7 @@ angular.module('whoWhatWhere').factory('GetDataSource', ['$http', '$q', function
             var signature = oauthSignature.generate(method, url, params, consumerSecret, tokenSecret, {encodeSignature: false});
             params['oauth_signature'] = signature;
             $http.jsonp(url, {params: params})
-                .success(function (data,callback) {
+                .success(function (data) {
                     defered.resolve(data.businesses);
                 })
                 .catch(function (data) {
