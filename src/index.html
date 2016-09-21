@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="whoWhatWhere">
+<head>
+    <meta charset="UTF-8"/>
+
+    <title>Wh3</title>
+    <!--Inclusion of all needed libraries files-->
+    <script src="lib/jquery/jquery-2.0.3.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-ui-router.min.js"></script>
+    <script src="lib/lodash/lodash.min.js"></script>
+    <script src="lib/angular/ng-map.min.js"></script>
+    <script src="lib/oauth-signature.min.js"></script>
+
+    <!--Style sheet file for application-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet" type="text/css"/>
+
+    <!--Js file for application-->
+    <script src="appRoute.js"></script>
+    <script src="js/service/GetDataSource.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+    <script src="js/service/yelpData.js"></script>
+    <script src="js/service/foursqureData.js"></script>
+
+</head>
+
+<body class="bgColor" data-ng-controller="mainController">
+    <div class="container">
+        <div class="row">
+            <header>
+                <div class="col-md-4">
+                    <div id="logo">
+                        <div id="logoIcon">Wh</div>
+                        <h1>o at ere</h1>
+                    </div>
+                </div>
+                <nav class="col-md-8 navbar navbar-default">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="home" class="active" ui-sref="home">Home</a></li>
+                        <li><a id="food" ui-sref="business" ng-click="onclickMenuItem($event)">Foods</a></li>
+                        <li><a id="lifeStyle" ui-sref="business" ng-click="onclickMenuItem($event)">LifeStyle</a></li>
+                        <li><a id="fun" ui-sref="business" ng-click="onclickMenuItem($event)">Fun</a></li>
+                        <li><a id="bars" ui-sref="business" ng-click="onclickMenuItem($event)">Bar</a></li>
+                        <li><a id="coffee" ui-sref="business" ng-click="onclickMenuItem($event)">Coffee</a></li>
+                        <li><a id="restaurants" ui-sref="business" ng-click="onclickMenuItem($event)">Restaurants</a></li>
+                    </ul>
+                </nav>
+                <div class="col-md-8 pull-right">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input class="form-control" type="search" required  id="searchItem" ng-model="menuItem"
+                                   list="list" placeholder="Search by Items"/>
+                            <datalist id="list" ng-model="menus">
+                                <option data-ng-repeat="data in menus" value="{{data}}">
+                                </option>
+                            </datalist>
+                            <input type="text" required id="searchCity" class="form-control" ng-model="city"
+                                   placeholder="Search by City"/>
+                            <button type="submit" id="searchButton" class="btn btn-default" value="Search"
+                                    ng-click="onSubmitClick($event)">Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div ui-view class="container"></div>
+</body>
+</html>
