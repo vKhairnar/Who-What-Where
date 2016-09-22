@@ -10,20 +10,26 @@ app.controller("mainController", function ($scope, NgMap, GetDataSource, yelpDat
                 var fourQData = foursqureData.foursqureFilterData(fourData);
                 var margeData = _.unionBy(yData, fourQData);
                 var i = 0;
-                while (i < 25) {
-                    $scope.personalData.push({
-                        name: margeData[i].name,
-                        address: margeData[i].address,
-                        ratingImage: margeData[i].ratingImage,
-                        image: margeData[i].image,
-                        phone: margeData[i].phone,
-                        lat: margeData[i].lat,
-                        lan: margeData[i].lan,
-                        url: margeData[i].url
-                    });
-                    i++
+                console.log('mh',margeData.length);
+                if(margeData.length !== 0){
+                    while (i < 25) {
+                        $scope.personalData.push({
+                            name: margeData[i].name,
+                            address: margeData[i].address,
+                            ratingImage: margeData[i].ratingImage,
+                            image: margeData[i].image,
+                            phone: margeData[i].phone,
+                            lat: margeData[i].lat,
+                            lan: margeData[i].lan,
+                            url: margeData[i].url
+                        });
+                        i++
+                    }
+
+                }else{
+                    alert('Data not Found');
                 }
-                if ($scope.personalData.length == 25) {
+                if ($scope.personalData.length == 25 || margeData.length !== 0) {
                     angular.element('#loader-screen').css('visibility', 'hidden');
                 }
             });
