@@ -25,7 +25,7 @@
 </head>
 
 <body class="bgColor" data-ng-controller="mainController">
-    <div class="container" onload="load()">
+    <div class="container">
         <div class="row">
             <header>
                 <div class="col-md-4">
@@ -37,12 +37,12 @@
                 <nav class="col-md-8 navbar navbar-default">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a id="home" class="active" ui-sref="home">Home</a></li>
-                        <li><a id="food" ng-click="onclickMenuItem($event)">Foods</a></li>
-                        <li><a id="lifeStyle" ng-click="onclickMenuItem($event)">LifeStyle</a></li>
-                        <li><a id="fun" ng-click="onclickMenuItem($event)">Fun</a></li>
-                        <li><a id="bars" ng-click="onclickMenuItem($event)">Bar</a></li>
-                        <li><a id="coffee" ng-click="onclickMenuItem($event)">Coffee</a></li>
-                        <li><a id="restaurants" ng-click="onclickMenuItem($event)">Restaurants</a></li>
+                        <li><a id="food" ng-click="onclickMenuItem($event)">{{menus[0]}}</a></li>
+                        <li><a id="lifeStyle" ng-click="onclickMenuItem($event)">{{menus[1]}}</a></li>
+                        <li><a id="fun" ng-click="onclickMenuItem($event)">{{menus[2]}}</a></li>
+                        <li><a id="bars" ng-click="onclickMenuItem($event)">{{menus[3]}}</a></li>
+                        <li><a id="coffee" ng-click="onclickMenuItem($event)">{{menus[4]}}</a></li>
+                        <li><a id="restaurants" ng-click="onclickMenuItem($event)">{{menus[5]}}</a></li>
                     </ul>
                 </nav>
                 <div class="col-md-12 col-md-offset-2">

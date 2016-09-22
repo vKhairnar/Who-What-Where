@@ -10,7 +10,6 @@ app.controller("mainController", function ($scope, NgMap, GetDataSource, yelpDat
                 var fourQData = foursqureData.foursqureFilterData(fourData);
                 var margeData = _.unionBy(yData, fourQData);
                 var i = 0;
-                console.log('mh',margeData.length);
                 if(margeData.length !== 0){
                     while (i < 25) {
                         $scope.personalData.push({
@@ -25,7 +24,6 @@ app.controller("mainController", function ($scope, NgMap, GetDataSource, yelpDat
                         });
                         i++
                     }
-
                 }else{
                     alert('Data not Found');
                 }
